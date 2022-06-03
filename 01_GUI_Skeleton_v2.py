@@ -5,6 +5,7 @@ class Start:
     def __init__(self):
         self.job_charge_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+        # start frame
         self.start_frame = Frame()
         self.start_frame.grid()
 
