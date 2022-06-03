@@ -5,7 +5,7 @@ class Start:
     def __init__(self, parent):
         self.charge=[]
 
-        # GUI to get starting currents and stakes
+        # start frame
         self.start_frame = Frame(padx=10, pady=10)
         self.start_frame.grid()
 
