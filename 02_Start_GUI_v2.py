@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 class Start:
     def __init__(self, parent):
 
-        heading="Arial 12 bold"
+        heading="Arial 15 bold"
 
         # start frame
         self.start_frame = Frame(padx=10, pady=10)
@@ -15,7 +15,7 @@ class Start:
         image = Image.open("logo.png")
 
         # resize image
-        resize_image = image.resize((300,60))
+        resize_image = image.resize((320,60))
         img = ImageTk.PhotoImage(resize_image)
         self.logo_label = Label(self.start_frame, image=img)
         self.logo_label.image =img
@@ -23,11 +23,11 @@ class Start:
 
         # Heading
         self.job_charge_label = Label(self.start_frame, text="Job Charge Calculator",
-                                       font="Arial 19 bold")
+                                       font="Arial 21 bold")
         self.job_charge_label.grid(row=1)
 
         # Instructions label
-        self.calculator_instructions = Label(self.start_frame, font="Arial 10 italic",
+        self.calculator_instructions = Label(self.start_frame, font="Arial 12 italic",
                                           text="Please fill out the following job information "
                                                "and press the 'Enter Job' button once finished."
                                                " At least one service needs to be selected. "
