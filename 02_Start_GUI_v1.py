@@ -5,7 +5,6 @@ class Start:
     def __init__(self, parent):
 
         heading="Arial 12 bold"
-        content="Areal 12"
 
         # start frame
         self.start_frame = Frame(padx=10, pady=10)
@@ -80,11 +79,10 @@ class Start:
 
         # button frame
         self.button_frame = Frame(self.start_frame)
-        self.button_frame.grid(row=5)
+        self.button_frame.grid(row=4)
 
         # error message
-        self.error_message_label = Label(self.button_frame,text="Error message will show"
-                                                        "here once there is empty field",
+        self.error_message_label = Label(self.button_frame,text="",
                                          font=heading)
         self.error_message_label.grid(row=0)
 
