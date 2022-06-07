@@ -67,15 +67,15 @@ class Start:
         self.minute_entry = Entry(self.entry_frame, font="Arial 16 bold")
         self.minute_entry.grid(row=3,column=1,padx=0)
 
-        # WOF and Tune
-        self.WOF_and_tune_label = Label(self.entry_frame, text="WOF and Tune:",
+        # wof and Tune
+        self.wof_and_tune_label = Label(self.entry_frame, text="WOF and Tune:",
                                          font=heading)
-        self.WOF_and_tune_label.grid(row=4, column=0, padx=0)
-        # WOF and Tune radio button
+        self.wof_and_tune_label.grid(row=4, column=0, padx=0)
+        # wof and Tune radio button
         var = IntVar
-        self.WOF_and_tune_radiobutton = Radiobutton(self.entry_frame,variable=var,
+        self.wof_and_tune_radiobutton = Radiobutton(self.entry_frame,variable=var,
                                                     value=1)
-        self.WOF_and_tune_radiobutton.grid(row=4, column=1, padx=0)
+        self.wof_and_tune_radiobutton.grid(row=4, column=1, padx=0)
 
         # button frame
         self.button_frame = Frame(self.start_frame)
