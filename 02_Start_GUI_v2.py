@@ -87,16 +87,16 @@ class Start:
         self.button_frame.grid(row=4)
 
         # error message
-        self.error_message_label = Label(self.button_frame,text="",
+        self.error_message_label = Label(self.button_frame, text="",
                                          font=heading)
-        self.error_message_label.grid(row=0,pady=10)
+        self.error_message_label.grid(row=0, columnspan=2)
 
         # Buttons
-        self.show_job_button = Button(self.button_frame, text="Show all Job")
-        self.show_job_button.grid(row=1, column=0,ipadx=20,ipady=5)
+        self.show_job_button = Button(self.button_frame, text="Show all Job", bg="#1E90FF")
+        self.show_job_button.grid(row=1, column=0)
 
-        self.enter_job_button = Button(self.button_frame, text="Enter Job")
-        self.enter_job_button.grid(row=1, column=1,ipadx=20,ipady=5)
+        self.enter_job_button = Button(self.button_frame, text="Enter Job", bg="#EE3B3B")
+        self.enter_job_button.grid(row=1, column=1)
 
 
 # main routine
