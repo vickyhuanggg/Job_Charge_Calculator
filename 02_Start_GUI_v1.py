@@ -84,13 +84,13 @@ class Start:
         # error message
         self.error_message_label = Label(self.button_frame,text="",
                                          font=heading)
-        self.error_message_label.grid(row=0)
+        self.error_message_label.grid(row=0,columnspan=2)
 
         # Buttons
-        self.show_job_button = Button(self.button_frame, text="Show all Job")
+        self.show_job_button = Button(self.button_frame, text="Show all Job", bg="#1E90FF")
         self.show_job_button.grid(row=1, column=0)
 
-        self.enter_job_button = Button(self.button_frame, text="Enter Job")
+        self.enter_job_button = Button(self.button_frame, text="Enter Job", bg="#EE3B3B")
         self.enter_job_button.grid(row=1, column=1)
 
 
