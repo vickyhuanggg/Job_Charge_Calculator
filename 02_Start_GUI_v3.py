@@ -111,8 +111,6 @@ class Start:
         minute = self.minute_entry.get()
         wof_and_tune = self.var.get()
 
-
-
         try:
             job_number = int(job_number)
             distance = float(distance)
