@@ -45,7 +45,8 @@ class Start:
         History(self,show_job)
 
 class History:
-     def __init__(self, partner,show_job):
+    def __init__(self, partner,show_job):
+        # the time of pressing the enter_button
         self.current = 0
 
         self.currents = IntVar()
@@ -97,13 +98,13 @@ class History:
                                   width=10,command=partial(lambda: self.nextbtn(show_job)))
         self.next_button.grid(row=0)
 
-     def close_hist(self, partner):
+    def close_hist(self, partner):
         # put buttons back to normal...
         partner.show_job_button.config(state=NORMAL)
         partner.enter_job_button.config(state=DISABLED)
         self.hist_box.destroy()
 
-     def nextbtn (self,show_job):
+    def nextbtn (self,show_job):
         time = self.currents.get()
         time += 1
         self.currents.set(time)
