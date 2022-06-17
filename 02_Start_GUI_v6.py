@@ -210,7 +210,7 @@ class History:
         # sets up child window
         self.hist_box = Toplevel()
 
-        # if users press cross at top, closes help and 'releases' help button
+        # if the owner presses cross at top, closes help and 'releases' help button
         self.hist_box.protocol('WM_DELETE_WINDOW', partial(self.close_hist, partner))
 
         # set up Gui frame
