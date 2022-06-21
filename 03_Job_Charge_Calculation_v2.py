@@ -206,6 +206,7 @@ class Start:
             round_travel_distance = floor(travel_distance)
         else:
             round_travel_distance = ceil(travel_distance)
+        print(round_travel_distance)
 
         # check distance
         if round_travel_distance <= 5:
