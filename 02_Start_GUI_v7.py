@@ -172,7 +172,7 @@ class Start:
                 error_feedback = "Number(s) should be entered"
                 any_entry = self.minute_entry
 
-
+            # check customer_name entry can't be integer or decimal number
             elif not all(letter.isalpha() or letter.isspace() for letter in customer_name):
                 has_errors = "yes"
                 error_feedback = "It shouldn't have number(s)"
