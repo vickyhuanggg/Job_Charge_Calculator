@@ -243,7 +243,7 @@ class Start:
 class History:
     def __init__(self, partner, job_information):
         # the time of pressing the enter_button
-        self.current = 0
+        self.current = -1
 
         self.currents = IntVar()
         self.currents.set(self.current)
@@ -346,17 +346,19 @@ class History:
             self.currents.set(time)
             self.previous_button.config(state=NORMAL)
 
-
+        # Previous button is disabled at the first page
         if time == -1:
             self.next_button.config(state=NORMAL)
             self.previous_button.config(state=DISABLED)
 
-        elif -(time) > len(job_information[0]) :
+        # Next button is disabled when there is only one job information
+        elif -(time) > len(job_information[0]):
             self.next_button.config(state=DISABLED)
             self.previous_button.config(state=DISABLED)
             last_job_information = "yes"
             prev_next_message = "Here is only one job information"
 
+        # Next button is disabled when it's at the last page
         elif -(time) == len(job_information[0]):
             self.next_button.config(state=DISABLED)
             self.previous_button.config(state=NORMAL)
