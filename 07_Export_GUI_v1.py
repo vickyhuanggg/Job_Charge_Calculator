@@ -3,10 +3,6 @@ from functools import partial   # To prevent unwanted windows
 from PIL import Image, ImageTk
 import re
 
-class Start:from tkinter import *
-from functools import partial   # To prevent unwanted windows
-from PIL import Image, ImageTk
-import re
 
 class Start:
     def __init__(self, parent):
@@ -224,9 +220,19 @@ class Export:
         self.export_frame = Frame(self.export_box, width=300)
         self.export_frame.grid()
 
+         # open the logo image
+        image = Image.open("logo.png")
+
+        # resize image
+        resize_image = image.resize((320,60))
+        img = ImageTk.PhotoImage(resize_image)
+        self.logo_label = Label(self.export_frame, image=img)
+        self.logo_label.image =img
+        self.logo_label.grid(row=0)
+
         # Set up Export heading (row 0)
         self.how_heading = Label(self.export_frame, text="Export / Instructions", font="arial 14 bold")
-        self.how_heading.grid(row=0)
+        self.how_heading.grid(row=1)
 
         # Export instructions(label, row 1)
         self.export_text = Label(self.export_frame, text="Enter a filename "
@@ -236,7 +242,7 @@ class Export:
                                  "job information history "
                                  "to a text file.",
                                  justify=LEFT, width=40, wrap=250)
-        self.export_text.grid(row=1)
+        self.export_text.grid(row=2)
 
         # Warning text (label,row 2)
         self.export_text = Label(self.export_frame, text="If the filename "
@@ -246,28 +252,28 @@ class Export:
                                  "be replaced with "
                                  "your job information "
                                  "history", justify=LEFT, bg="#ffafaf", fg="maroon", font="Arial 10 italic", wrap=225, padx=10, pady=10)
-        self.export_text.grid(row=2,pady=10)
+        self.export_text.grid(row=3,pady=10)
 
         # Filename Entry Box (row 3)
         self.filename_entry = Entry(self.export_frame, width=20, font="Arial 14 bold", justify=CENTER)
-        self.filename_entry.grid(row=3, pady=10)
+        self.filename_entry.grid(row=4, pady=10)
 
          # Error Message Labels
         self.save_error_label = Label(self.export_frame, text="", fg="maroon")
-        self.save_error_label.grid(row=4)
+        self.save_error_label.grid(row=5)
 
         # Save / Cancel Frame (row 5)
         self.save_cancel_frame = Frame(self.export_frame)
-        self.save_cancel_frame.grid(row=5, pady=10)
+        self.save_cancel_frame.grid(row=6, pady=10)
 
         # Save and Cancel Buttons(row 0 of save_cancel_frame)
         self.save_button = Button(self.save_cancel_frame, text="Save",
-                                  font="Arial 15 bold", bg="#003366", fg="white",
+                                  font="Arial 15 bold", bg="#1E90FF", fg="black",
                                   command=partial(lambda: self.save_history(partner, job_information)))
         self.save_button.grid(row=0, column=0)
 
         self.cancel_button = Button(self.save_cancel_frame, text="Cancel",
-                                    font="Arial 15 bold", bg="#003366", fg="white",
+                                    font="Arial 15 bold", bg="#003366", fg="black",
                                     command=partial(self.close_export, partner))
         self.cancel_button.grid(row=0, column=1)
 
@@ -302,7 +308,7 @@ class Export:
             self.filename_entry.config(bg="#ffafaf")
             print()
         else:
-            # If there are no errors, generate text file and then clost
+            # If there are no errors, generate text file and then close
             # add .txt suffix!
             filename = filename + ".txt"
 
