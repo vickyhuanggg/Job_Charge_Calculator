@@ -206,7 +206,6 @@ class History:
 
 class Export:
     def __init__(self, partner, job_information):
-        print(job_information)
 
         # disable export buttons
         partner.export_button.config(state=DISABLED)
