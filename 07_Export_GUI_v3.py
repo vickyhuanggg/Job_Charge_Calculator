@@ -205,7 +205,6 @@ class History:
 
 class Export:
     def __init__(self, partner, job_information, filenames):
-        print(job_information)
         print(filenames)
 
         # disable export button
