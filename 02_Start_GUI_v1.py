@@ -52,7 +52,7 @@ class Start:
         self.customer_name_entry.grid(row=1,column=1,padx=0)
 
         # Distance label
-        self.distance_label = Label(self.entry_frame, text="Distance::",
+        self.distance_label = Label(self.entry_frame, text="Distance:",
                                          font=heading)
         self.distance_label.grid(row=2, column=0, padx=0)
         # Distance entry box
