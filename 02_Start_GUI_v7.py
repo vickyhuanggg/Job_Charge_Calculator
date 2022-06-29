@@ -201,7 +201,7 @@ class History:
 
 
         heading="Arial 12 bold"
-        content="Areal 12"
+        content="Arial 12"
 
         # disable buttons
         partner.show_job_button.config(state=DISABLED)
@@ -226,7 +226,6 @@ class History:
 
      def close_hist(self, partner):
         # put buttons back to normal...
-        partner.show_job_button.config(state=NORMAL)
         partner.enter_job_button.config(state=NORMAL)
         self.hist_box.destroy()
 
