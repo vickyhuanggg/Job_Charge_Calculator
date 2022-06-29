@@ -44,7 +44,7 @@ class History:
         # GUI Setup
         self.information_box = Toplevel()
         self.information_frame = Frame(self.information_box)
-        self.information.grid()
+        self.information_frame.grid()
 
         # Heading Row
         self.heading_label = Label(self.information_frame, text="Job Information",
@@ -62,8 +62,6 @@ class History:
     def next_information(self):
         # retrieve the balance from the initial function
         current_balance = self.balance.get()
-
-
         # for testing purposes, just add 1
         current_balance += 1
 
