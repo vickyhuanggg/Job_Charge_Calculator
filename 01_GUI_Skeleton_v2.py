@@ -3,7 +3,7 @@ from functools import partial   # To prevent unwanted windows
 
 class Start:
     def __init__(self):
-        self.job_charge_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        self.job_charge_list = [1, 2, 3, 4, 5, 6, 7, 8, 10]
 
         # start frame
         self.start_frame = Frame()
@@ -60,7 +60,7 @@ class History:
         self.charge_label.grid(row=1, column=0, padx=0)
 
         self.charge_value_label = Label(self.hist_frame, font=content,
-                                               text="",
+                                               text="${}".format(job_charge[0]),
                                                anchor="w")
         self.charge_value_label.grid(row=1, column=1, padx=0)
 
