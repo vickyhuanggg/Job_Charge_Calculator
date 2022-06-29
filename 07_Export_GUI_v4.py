@@ -123,7 +123,7 @@ class History:
                                   command=partial(lambda: self.prev_next_btn(job_information, 1)))
         self.next_button.grid(row=0, column=1,pady=5)
 
-         # Export Button
+        # Export Button
         self.export_button = Button(self.buttons_frame, text="Export",
                                     width=10, bg="#1E90FF",
                                     font="arial 16 bold",
