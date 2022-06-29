@@ -214,9 +214,7 @@ class Start:
             price = fixed_price
 
         elif round_travel_distance > 5:
-            price = fixed_price + (round_travel_distance - 5) * 0.5
-
-        print(price)
+            price = fixed_price + (round_travel_distance - 5) * 0.505
 
         # check services
         if wof_and_tune == 1 and len(minute) == 0:
@@ -233,7 +231,7 @@ class Start:
             total_price = price + WOF_AND_TUNE + float(minute) * 0.8
             total_prices = "{:.2f}".format(total_price, 2)
             self.job_information_list[2].append(total_prices)
-        print(self.job_information_list[2])
+        print(self.job_information_list)
 
 
     def to_history(self,job_information):
