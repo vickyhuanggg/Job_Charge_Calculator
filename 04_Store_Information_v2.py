@@ -185,9 +185,7 @@ class Start:
                 # active the button
                 self.show_job_button.config(state=NORMAL)
                 self.job_information_list[0].append(job_number)
-                print(self.job_information_list[0])
                 self.job_information_list[1].append(customer_name.title())
-                print(self.job_information_list[1])
                 self.calculation()
 
 
@@ -233,7 +231,8 @@ class Start:
             total_price = price + WOF_AND_TUNE + float(minute) * 0.8
             total_prices = "{:.2f}".format(total_price, 2)
             self.job_information_list[2].append(total_prices)
-        print(self.job_information_list[2])
+
+        print(self.job_information_list)
 
 
     def to_history(self,job_information):
