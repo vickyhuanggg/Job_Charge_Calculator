@@ -120,6 +120,10 @@ class Start:
                 elif not customer_name.isalpha():
                     self.error_message_label.config(text="It shouldn't have number(s)")
 
+                # check minute entry can't be str when the wof_and _tune is not chosen
+                elif not minute.isnumeric() and wof_and_tune != 1:
+                    self.error_message_label.config(text="Number(s) should be entered")
+
                 # check minute entry can't be str when the wof_and_tune is chosen
                 elif not minute.isnumeric() and wof_and_tune == 1 and len(minute)>0:
                     self.error_message_label.config(text="Number(s) should be entered")
