@@ -151,7 +151,7 @@ class Start:
 
         else:
             # check job_number entry can't be str
-            if not job_number.isnumeric() :
+            if not job_number.isnumeric():
                 has_errors = "yes"
                 error_feedback = "Number(s) should be entered"
                 any_entry = self.job_number_entry
