@@ -209,6 +209,9 @@ class Export:
 
         # disable export buttons
         partner.export_button.config(state=DISABLED)
+        partner.dismiss_btn.config(state=DISABLED)
+        partner.next_button.config(state=DISABLED)
+        partner.previous_button.config(state=DISABLED)
 
         # sets up child window
         self.export_box = Toplevel()
@@ -339,9 +342,12 @@ class Export:
 
 
     def close_export(self, partner):
-        # put export button back to normal...
+        # put buttons back to normal...
 
         partner.export_button.config(state=NORMAL)
+        partner.dismiss_btn.config(state=NORMAL)
+        partner.next_button.config(state=NORMAL)
+        partner.previous_button.config(state=NORMAL)
         self.export_box.destroy()
 
 # main routine
