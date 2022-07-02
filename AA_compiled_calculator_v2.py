@@ -192,7 +192,7 @@ class Start:
             # check customer_name entry can't be integer or decimal number
             elif not all(letter.isalpha() or letter.isspace() for letter in customer_name):
                 has_errors = "yes"
-                error_feedback = "It shouldn't have number(s)"
+                error_feedback = "It shouldn't have number"
                 any_entry = self.customer_name_entry
 
 
@@ -335,7 +335,7 @@ class History:
         self.buttons_frame.grid(row=4)
 
         # previous button
-        self.previous_button = Button(self.buttons_frame, text="Previous",
+        self.previous_button = Button(self.buttons_frame, text="< Previous",
                                       width=10, bg="#87CEFF", font="arial 15 bold",
                                       command=partial(lambda: self.prev_next_btn(job_information, 0)))
         self.previous_button.grid(row=0, column=0,pady=5)
@@ -344,7 +344,7 @@ class History:
         self.previous_button.config(state=DISABLED)
 
         # next button
-        self.next_button = Button(self.buttons_frame, text="Next",
+        self.next_button = Button(self.buttons_frame, text="Next >",
                                   width=10,bg="#FFC1C1", font="arial 15 bold",
                                   command=partial(lambda: self.prev_next_btn(job_information, 1)))
         self.next_button.grid(row=0, column=1,pady=5)
