@@ -73,7 +73,7 @@ class Start:
                                          font=heading,justify=LEFT)
         self.minute_label.grid(row=3, column=0, padx=0,pady=5)
         # minutes on virus protection entry box
-        self.minute_entry = Entry(self.entry_frame, font="Arial 16 bold")
+        self.minute_entry = Entry(self.entry_frame,font="Arial 16 bold")
         self.minute_entry.grid(row=3,column=1,padx=0,pady=5)
 
         # wof and Tune
@@ -175,13 +175,13 @@ class Start:
                     any_entry = self.distance_entry
 
                 # check minute entry can't be str when the wof_and _tune is not chosen
-                elif not minute.isnumeric() and wof_and_tune != 1:
+                elif not minute.isnumeric() and wof_and_tune != 1 and len(minute)>0:
                     has_errors = "yes"
                     error_feedback = "A positive integer should be entered"
                     any_entry = self.minute_entry
 
                 # check job_number entry can't be str when the wof_and_tune is chosen
-                elif not minute.isnumeric() and wof_and_tune == 1 and len(minute)>0:
+                elif not minute.isnumeric() and wof_and_tune == 1:
                     has_errors = "yes"
                     error_feedback = "A positive integer should be entered"
                     any_entry = self.minute_entry
@@ -192,7 +192,8 @@ class Start:
                     error_feedback = "It shouldn't have number or symbol"
                     any_entry = self.customer_name_entry
 
-                elif int(minute) <= 0:
+                # allow the owner to enter 0 when wof_and_tune is chosen
+                elif int(minute) <= 0 and wof_and_tune != 1:
                     has_errors = "yes"
                     error_feedback = "The integer should be bigger than 0"
                     any_entry = self.minute_entry
