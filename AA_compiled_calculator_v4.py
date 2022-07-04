@@ -7,7 +7,7 @@ import os.path
 
 class Start:
     def __init__(self, parent):
-        
+        # a nested list to store job information of job numbers, customer names and job charge
         self.job_information_list=[[],[],[]]
 
         heading="Arial 15 bold"
@@ -113,6 +113,7 @@ class Start:
         self.show_all_job_button.config(state=DISABLED)
 
     def check_entries(self):
+        # get job number, customer name, distance and minute and wof and tune from the entry box or checkbutton or spin box
         job_number = self.job_number_entry.get()
         customer_name = self.customer_name_entry.get()
         distance = self.distance_entry.get()
@@ -135,11 +136,14 @@ class Start:
         self.error_message_label.config(fg="#B22222")
 
         try:
+            # error handling for both alphabet and number in distance_entry
             distances = float(distance)
+
             # check at least one service is chosen
             if wof_and_tune == 0 and (len(minute) == 0 or int(minute)==0):
                 self.error_message_label.config(text="At least one service needs to be selected")
 
+            # the minute spinbox goes back to default value 0 when the owner doesn't enter anything
             elif wof_and_tune == 1 and len(minute) == 0:
                 self.minute_var.set(0)
 
@@ -204,6 +208,7 @@ class Start:
                     error_feedback = "The integer should be bigger than 0"
                     any_entry = self.minute
 
+                # error handling for number that is smaller or equal than zero
                 elif distances <= 0:
                     has_errors = "yes"
                     error_feedback = "The number should be bigger than 0"
@@ -215,7 +220,9 @@ class Start:
                     self.job_information_list[0].append(job_number)
                     self.job_information_list[1].append(customer_name.title())
                     self.calculation()
+                    # the message of job being saved
                     self.error_message_label.config(text="Job {} is saved".format(self.job_information_list[0][-1]),fg="green")
+                    # clear all the job information once the owner press the enter job button
                     self.job_number_entry.delete(0, 'end')
                     self.customer_name_entry.delete(0, 'end')
                     self.distance_entry.delete(0, 'end')
@@ -436,6 +443,7 @@ class History:
             self.next_button.config(state=NORMAL)
             self.previous_button.config(state=NORMAL)
 
+        # change the value of the job information once the next or previous button is pressed
         if not last_job_information == "yes":
             self.show_job_number_value_label.config(text=job_information[0][time])
             self.show_customer_name_value_label.config(text=job_information[1][time])
@@ -539,6 +547,7 @@ class Export:
         filename = self.filename_entry.get()
         print(filename)
 
+        # check filename
         for letter in filename:
             if re.match(valid_char, letter):
                 continue
