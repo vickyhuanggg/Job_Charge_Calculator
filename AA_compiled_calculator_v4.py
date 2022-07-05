@@ -49,6 +49,7 @@ class Start:
         self.job_number_label = Label(self.entry_frame, text="Job Number:",
                                          font=heading)
         self.job_number_label.grid(row=0, column=0, padx=0,pady=5, sticky="w")
+
         # Job number entry box
         self.job_number_entry = Entry(self.entry_frame, font="Arial 16 bold")
         self.job_number_entry.grid(row=0,column=1,padx=0,pady=5)
@@ -57,6 +58,7 @@ class Start:
         self.customer_name_label = Label(self.entry_frame, text="Customer Name:",
                                          font=heading)
         self.customer_name_label.grid(row=1, column=0, padx=0,pady=5,sticky="w")
+
         # Customer entry box
         self.customer_name_entry = Entry(self.entry_frame, font="Arial 16 bold")
         self.customer_name_entry.grid(row=1,column=1,padx=0,pady=5)
@@ -65,6 +67,7 @@ class Start:
         self.distance_label = Label(self.entry_frame, text="Distance(km):",
                                          font=heading)
         self.distance_label.grid(row=2, column=0, padx=0,pady=5,sticky="w")
+
         # Distance entry bo
         self.distance_entry = Entry(self.entry_frame, font="Arial 16 bold")
         self.distance_entry.grid(row=2,column=1,padx=0,pady=5)
@@ -73,16 +76,20 @@ class Start:
         self.minute_label = Label(self.entry_frame, text="Minutes on\nVirus Protection:",
                                          font=heading,justify=LEFT)
         self.minute_label.grid(row=3, column=0, padx=0,pady=5)
+
         # minutes on virus protection spinbox
         self.minute_var = IntVar()
+        self.minute_var.set(0)
         minute_var = self.minute_var
-        self.minute = Spinbox(self.entry_frame, from_=0, to=50, textvariable=minute_var, width=10)
-        self.minute.grid(row=3,column=1, padx=0,pady=5,sticky="w")
+        # minutes on virus protection entry box
+        self.minute_entry = Entry(self.entry_frame, textvariable=minute_var, font="Arial 16 bold")
+        self.minute_entry.grid(row=3,column=1,padx=0,pady=5)
 
         # wof and Tune
         self.wof_and_tune_label = Label(self.entry_frame, text="WOF and Tune:",
                                          font=heading)
         self.wof_and_tune_label.grid(row=4, column=0, padx=0,pady=5,sticky="w")
+
         # wof and Tune radio button
         self.var = IntVar()
         wof_var=self.var
@@ -117,7 +124,7 @@ class Start:
         job_number = self.job_number_entry.get()
         customer_name = self.customer_name_entry.get()
         distance = self.distance_entry.get()
-        minute = self.minute.get()
+        minute = self.minute_entry.get()
         wof_and_tune = self.var.get()
 
         # set error background colours (and assume that there are no errors at the start
@@ -131,7 +138,7 @@ class Start:
         self.job_number_entry.config(bg="white")
         self.customer_name_entry.config(bg="white")
         self.distance_entry.config(bg="white")
-        self.minute.config(bg="white")
+        self.minute_entry.config(bg="white")
         self.error_message_label.config(text="")
         self.error_message_label.config(fg="#B22222")
 
@@ -246,7 +253,7 @@ class Start:
 
         # get the distance from the entry and round up the distance, get minute, get checkbutton
         travel_distance = float(self.distance_entry.get())
-        minute = self.minute.get()
+        minute = self.minute_entry.get()
         wof_and_tune = self.var.get()
 
         # to check the first decimal place is smaller or bigger than 0.5
