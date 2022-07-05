@@ -72,6 +72,7 @@ class Start:
         self.minute_label = Label(self.entry_frame, text="Minutes on\nVirus Protection:",
                                          font=heading,justify=LEFT)
         self.minute_label.grid(row=3, column=0, padx=0,pady=5)
+
         # minutes on virus protection entry box
         self.minute_entry = Entry(self.entry_frame,font="Arial 16 bold")
         self.minute_entry.grid(row=3,column=1,padx=0,pady=5)
