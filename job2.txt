@@ -1,0 +1,22 @@
+Job Information
+
+Job Number: 123
+Customer Name: Vicky Huang
+Job Charge: $113.50
+
+Job Number: 124
+Customer Name: Amy Zhen
+Job Charge: $28.30
+
+Job Number: 125
+Customer Name: Joey Liu
+Job Charge: $124.50
+
+Job Number: 126
+Customer Name: Joy Ma
+Job Charge: $29.60
+
+Job Number: 127
+Customer Name: Ellite Tang
+Job Charge: $123.10
+
