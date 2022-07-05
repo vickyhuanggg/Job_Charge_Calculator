@@ -164,90 +164,90 @@ class Start:
                 error_feedback = "It shouldn't be empty"
                 any_entry = self.customer_name_entry
 
-            # check distance entry can't be empty
-            elif len(distance) == 0:
+            # check job_number entry can't be str
+            elif not job_number.isnumeric():
                 has_errors = "yes"
-                error_feedback = "It shouldn't be empty"
+                error_feedback = "A positive integer should be entered"
+                any_entry = self.job_number_entry
+
+            # check the job number can't be negative
+            elif int(job_number) <= 0:
+                has_errors = "yes"
+                error_feedback = "The integer should bigger than 0"
+                any_entry = self.job_number_entry
+
+            # check distance entry can't be str
+            elif all(letter.isalpha() or letter.isspace() for letter in distance):
+                has_errors = "yes"
+                error_feedback = "A positive number should be entered"
+                any_entry = self.distance_entry
+
+            # check minute entry can't be str when the wof_and _tune is not chosen
+            elif not minute.isnumeric() and wof_and_tune != 1 and len(minute)>0:
+                has_errors = "yes"
+                error_feedback = "A positive integer should be entered"
+                any_entry = self.minute
+
+            # check job_number entry can't be str when the wof_and_tune is chosen
+            elif not minute.isnumeric() and wof_and_tune == 1 and len(minute)>0:
+                has_errors = "yes"
+                error_feedback = "A positive integer should be entered"
+                any_entry = self.minute
+
+            # check customer_name entry can't be integer or decimal number
+            elif not all(letter.isalpha() or letter.isspace() for letter in customer_name):
+                has_errors = "yes"
+                error_feedback = "It shouldn't have number or symbol"
+                any_entry = self.customer_name_entry
+
+            # allow the owner to enter 0 when wof_and_tune is chosen
+            elif int(minute) < 0 and wof_and_tune != 1:
+                has_errors = "yes"
+                error_feedback = "The integer should be bigger than 0"
+                any_entry = self.minute
+
+            # allow the owner to enter 0 when wof_and_tune is chosen
+            elif int(minute) == 0 and wof_and_tune != 1:
+                has_errors = "yes"
+                error_feedback = "At least one service needs to be selected"
+                any_entry = self.minute
+
+
+            # error handling for number that is smaller or equal than zero
+            elif distances <= 0:
+                has_errors = "yes"
+                error_feedback = "The number should be bigger than 0"
                 any_entry = self.distance_entry
 
             else:
-                # check job_number entry can't be str
-                if not job_number.isnumeric():
-                    has_errors = "yes"
-                    error_feedback = "A positive integer should be entered"
-                    any_entry = self.job_number_entry
-
-                # check the job number can't be negative
-                elif int(job_number) <= 0:
-                    has_errors = "yes"
-                    error_feedback = "The integer should bigger than 0"
-                    any_entry = self.job_number_entry
-
-                # check distance entry can't be str
-                elif all(letter.isalpha() or letter.isspace() for letter in distance):
-                    has_errors = "yes"
-                    error_feedback = "A positive number should be entered"
-                    any_entry = self.distance_entry
-
-                # check minute entry can't be str when the wof_and _tune is not chosen
-                elif not minute.isnumeric() and wof_and_tune != 1 and len(minute)>0:
-                    has_errors = "yes"
-                    error_feedback = "A positive integer should be entered"
-                    any_entry = self.minute
-
-                # check job_number entry can't be str when the wof_and_tune is chosen
-                elif not minute.isnumeric() and wof_and_tune == 1 and len(minute)>0:
-                    has_errors = "yes"
-                    error_feedback = "A positive integer should be entered"
-                    any_entry = self.minute
-
-                # check customer_name entry can't be integer or decimal number
-                elif not all(letter.isalpha() or letter.isspace() for letter in customer_name):
-                    has_errors = "yes"
-                    error_feedback = "It shouldn't have number or symbol"
-                    any_entry = self.customer_name_entry
-
-                # allow the owner to enter 0 when wof_and_tune is chosen
-                elif int(minute) < 0 and wof_and_tune != 1:
-                    has_errors = "yes"
-                    error_feedback = "The integer should be bigger than 0"
-                    any_entry = self.minute
-
-                # allow the owner to enter 0 when wof_and_tune is chosen
-                elif int(minute) == 0 and wof_and_tune != 1:
-                    has_errors = "yes"
-                    error_feedback = "At least one service needs to be selected"
-                    any_entry = self.minute
-
-
-                # error handling for number that is smaller or equal than zero
-                elif distances <= 0:
-                    has_errors = "yes"
-                    error_feedback = "The number should be bigger than 0"
-                    any_entry = self.distance_entry
-
-                else:
-                    # active the button
-                    self.show_all_job_button.config(state=NORMAL)
-                    self.job_information_list[0].append(job_number)
-                    self.job_information_list[1].append(customer_name.title())
-                    self.calculation()
-                    # the message of job being saved
-                    self.error_message_label.config(text="Job {} is saved".format(self.job_information_list[0][-1]),fg="green")
-                    # clear all the job information once the owner press the enter job button
-                    self.job_number_entry.delete(0, 'end')
-                    self.customer_name_entry.delete(0, 'end')
-                    self.distance_entry.delete(0, 'end')
-                    self.minute_var.set(0)
-                    self.var.set(0)
+                # active the button
+                self.show_all_job_button.config(state=NORMAL)
+                self.job_information_list[0].append(job_number)
+                self.job_information_list[1].append(customer_name.title())
+                self.calculation()
+                # the message of job being saved
+                self.error_message_label.config(text="Job {} is saved".format(self.job_information_list[0][-1]),fg="green")
+                # clear all the job information once the owner press the enter job button
+                self.job_number_entry.delete(0, 'end')
+                self.customer_name_entry.delete(0, 'end')
+                self.distance_entry.delete(0, 'end')
+                self.minute_var.set(0)
+                self.var.set(0)
 
             if has_errors == "yes":
                 any_entry.config(bg=error_back)
                 self.error_message_label.config(text=error_feedback)
 
         except ValueError:
-            self.error_message_label.config(text="It should be a number")
-            self.distance_entry.config(bg=error_back)
+            # check distance entry can't be empty
+            if len(distance) == 0:
+                self.error_message_label.config(text="It shouldn't be empty")
+                self.distance_entry.config(bg=error_back)
+
+            # check invalid data, such as alphabet,symbol, both alphabet and number
+            else:
+                self.error_message_label.config(text="It should be a number")
+                self.distance_entry.config(bg=error_back)
 
     def calculation(self):
         WOF_AND_TUNE = float(100)
