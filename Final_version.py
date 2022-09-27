@@ -1,3 +1,7 @@
+# Job Charge Calculator
+# Vicky Huang
+# 05.07.2022
+
 from tkinter import *
 from functools import partial   # To prevent unwanted windows
 from PIL import Image, ImageTk
@@ -7,6 +11,12 @@ import os.path
 
 class Start:
     def __init__(self, parent):
+        """
+        Constructs all the necessary attributes for the job charge calculator
+
+        Parameter: none
+        Return: none
+        """
         # a nested list to store job information of job numbers, customer names and job charge
         self.job_information_list=[[],[],[]]
 
@@ -118,6 +128,13 @@ class Start:
         self.show_all_job_button.config(state=DISABLED)
 
     def check_entries(self):
+        """
+        check the data of the job information.Error messages will be shown if the
+        user enter invalid data
+
+        parameter:none
+        return:none
+        """
         # get job number, customer name, distance and minute and wof and tune from the entry box or checkbutton or spin box
         job_number = self.job_number_entry.get()
         customer_name = self.customer_name_entry.get()
@@ -250,6 +267,12 @@ class Start:
                 self.distance_entry.config(bg=error_back)
 
     def calculation(self):
+        """
+        get the calculation of the total charge
+
+        parameter: none
+        return: none
+        """
         WOF_AND_TUNE = float(100)
         FIXED_PRICE = float(10)
         DISTANCE_PRICE = 0.5
@@ -294,11 +317,27 @@ class Start:
 
 
     def to_history(self,job_information):
+        """
+        Job history window will be shown once the 'show all job' button is pressed
+
+        parameter:
+        job_information: list
+            job numbers, customer name, and job charge
+        return: none
+        """
 
         History(self,job_information)
 
 class History:
     def __init__(self, partner, job_information):
+        """
+        Create a window for the owner to view the job information.
+
+        parameter:
+        job_information: list
+            job numbers, customer name, and job charge
+        return: none
+        """
         # the time of pressing the enter_button
         self.current = -1
 
@@ -405,6 +444,17 @@ class History:
         self.dismiss_btn.grid(row=5, column=1,pady=5)
 
     def prev_next_btn(self, job_information, button):
+        """
+        Show the previous or next job information once the 'previous' or 'next'
+        button is pressed.
+
+        parameter:
+        job_information: list
+            job number, customer name and job charge
+        button: int
+            the 'previous' or 'next' button that the owner pressed
+        return: none
+        """
         # get value of which button is pressed
         self.buttons = IntVar()
         self.buttons.set(button)
@@ -465,6 +515,12 @@ class History:
             self.information_message_label.config(text=prev_next_message)
 
     def close_hist(self, partner):
+        """
+        close the job information history's window
+
+        parameter: none
+        return: none
+        """
         # put help button back to normal...
 
         partner.show_all_job_button.config(state=NORMAL)
@@ -472,10 +528,27 @@ class History:
         self.hist_box.destroy()
 
     def export(self, job_information):
+        """
+        Open the export job information's window
+
+        parameter:
+        job_information: list
+            job number, customer's name and job charge
+        return: none
+        """
         Export(self, job_information)
 
 class Export:
     def __init__(self, partner, job_information):
+        """
+        Export window will be shown once the 'export' button is pressed.
+        Export the job information history
+
+        parameter:
+        job_information: list
+            job number, customer's name and job charge
+        return: none
+        """
 
         # disable export buttons
         partner.export_button.config(state=DISABLED)
@@ -552,6 +625,14 @@ class Export:
         self.cancel_button.grid(row=0, column=1)
 
     def save_history(self, partner, job_information):
+        """
+        Save and export the job information history
+
+        parameter:
+        job_information: list
+            job number, customer's name and job charge
+        return: none
+        """
         # Regular expression to check filename is valid
         valid_char = "[A-Za-z0-9]"
         has_error = "no"
@@ -613,6 +694,12 @@ class Export:
 
 
     def close_export(self, partner):
+        """
+        Close the export window
+
+        parameter: none
+        return: none
+        """
         # put buttons back to normal...
 
         partner.export_button.config(state=NORMAL)
