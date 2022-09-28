@@ -1,7 +1,9 @@
-# Job Charge Calculator
-# Vicky Huang
-# Final version of the job charge calculator program
-# 05.07.2022
+"""
+Job Charge Calculator
+Vicky Huang
+Final version of the job charge calculator program
+05.07.2022
+"""
 
 from tkinter import *
 from functools import partial   # To prevent unwanted windows
